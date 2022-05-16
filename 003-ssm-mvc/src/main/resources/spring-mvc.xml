@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+
+    <context:component-scan base-package="com.luolg">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--        /jsp/success.jsp-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/jsp/">
+        </property>
+        <property name="suffix" value=".jsp">
+        </property>
+    </bean>
+
+    <!--    enable the json output return-->
+    <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+    <!--        <property name="messageConverters">-->
+    <!--            <list>-->
+    <!--                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>-->
+    <!--            </list>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+
+    <!--    mvn anno driven-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <!--    open the allowed access for certain resources in spring-mvc, usually the static resources-->
+    <!--    <mvc:resources mapping="/js/**" location="/js/"/>-->
+    <!--    <mvc:resources mapping="/img/**" location="/img/"/>-->
+
+    <!--if spring-mvc fail to find the static resources,then let the tomcat to find it-->
+    <mvc:default-servlet-handler/>
+
+
+    <!--    claim that converter of date-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.luolg.converter.DateConverter">
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1000000000"/>
+        <property name="maxUploadSizePerFile" value="1000000000"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+</beans>
+
