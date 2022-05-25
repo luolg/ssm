@@ -1,6 +1,5 @@
 package com.luolg.service.impl;
 
-import com.luolg.App;
 import com.luolg.dao.UserDao;
 import com.luolg.service.UserService;
 import org.springframework.context.ApplicationContext;

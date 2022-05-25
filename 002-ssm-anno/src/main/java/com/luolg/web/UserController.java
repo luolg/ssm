@@ -1,6 +1,5 @@
 package com.luolg.web;
 
-import com.luolg.App;
 import com.luolg.config.SpringConfiguration;
 import com.luolg.service.UserService;
 import org.springframework.context.ApplicationContext;
