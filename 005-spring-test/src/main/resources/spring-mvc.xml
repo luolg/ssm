@@ -24,6 +24,13 @@
     <!--web scan-->
     <context:component-scan base-package="com.luolg.controller"/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="com.luolg.interceptor.PrivilegeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>

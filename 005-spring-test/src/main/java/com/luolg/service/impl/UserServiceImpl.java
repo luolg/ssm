@@ -5,6 +5,7 @@ import com.luolg.dao.UserDao;
 import com.luolg.domain.Role;
 import com.luolg.domain.User;
 import com.luolg.service.UserService;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.List;
 
@@ -48,5 +49,17 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUserRoleRelation(userId);
         //delete user table record
         userDao.deleteUser(userId);
+    }
+
+    @Override
+    public User login(String username, String password) {
+        try {
+            User user = userDao.findByUsernameAndPassword(username, password);
+            return user;
+
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+
     }
 }

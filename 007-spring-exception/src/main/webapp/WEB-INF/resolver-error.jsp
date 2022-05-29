@@ -1,16 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: luolg
-  Date: 2022/5/29
-  Time: 15:02
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h2>resolver error</h2>
+<h3>${info}</h3>
+
+</body>
 </html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -56,6 +57,18 @@ public class UserController {
     public String delete(@PathVariable("userId") Long userId) {
         userService.delete(userId);
         return "redirect:/user/list";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(String username, String password, HttpSession session) {
+        User user = userService.login(username, password);
+        if (user != null) {
+            // login succeed, storage user to session
+            System.out.println("controller info: " + user);
+            session.setAttribute("user", user);
+            return "redirect:/index.jsp";
+        }
+        return "redirect:/login.jsp";
     }
 
 }
