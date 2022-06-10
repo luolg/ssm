@@ -26,8 +26,8 @@
     </environments>
 
     <mappers>
-        <mapper resource="mapper/AccountMapper.xml"/>
-<!--        <package name="mapper"/>-->
+        <!--        <mapper resource="mapper/AccountMapper.xml"/>-->
+        <package name="com/luolg/mapper"/>
     </mappers>
 
 </configuration>

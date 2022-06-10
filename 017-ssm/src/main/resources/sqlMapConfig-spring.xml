@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+
+
+    <typeAliases>
+        <!--        <typeAlias type="com.luolg.domain.Account" alias="account"/>-->
+        <package name="com.luolg.domain"/>
+    </typeAliases>
+
+
+    <!--    <mappers>-->
+    <!--        &lt;!&ndash;        <mapper resource="mapper/AccountMapper.xml"/>&ndash;&gt;-->
+    <!--        <package name="com/luolg/mapper"/>-->
+    <!--    </mappers>-->
+
+</configuration>
